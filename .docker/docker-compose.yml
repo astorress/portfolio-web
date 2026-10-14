@@ -1,0 +1,37 @@
+name: portfolio-web
+
+services:
+
+  # Desarrollo con hot reload (http://localhost:5173). También es el servicio del devcontainer.
+  web_dev:
+    container_name: 'PortfolioWebDev'
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+      target: img-dev
+    volumes:
+      - ..:/app
+      - portfolio-web-node-modules:/app/node_modules
+      - portfolio-web-bashhistory:/commandhistory
+    ports:
+      - 5173:5173
+    working_dir: /app
+    restart: unless-stopped
+
+  # Imagen de producción: la misma que se despliega (http://localhost:8080)
+  web_prod:
+    container_name: 'PortfolioWebProd'
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+      target: img-prod
+    ports:
+      - 8080:80
+    restart: unless-stopped
+    profiles: ["prod"]
+
+volumes:
+  portfolio-web-node-modules:
+    name: portfolio-web-node-modules
+  portfolio-web-bashhistory:
+    name: portfolio-web-bashhistory

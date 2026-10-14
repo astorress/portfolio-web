@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Repo "<usuario>.github.io" → sitio en la raíz; cualquier otro repo → /<repo>/
+      - name: Calcular base
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          if [[ "$REPO" == *.github.io ]]; then echo "VITE_BASE=/" >> "$GITHUB_ENV"; else echo "VITE_BASE=/$REPO/" >> "$GITHUB_ENV"; fi
+
+      # Mismo Dockerfile que en local: lo que pruebas es lo que se publica
+      - name: Build con Docker
+        run: docker build -f .docker/Dockerfile --target export --build-arg VITE_BASE="$VITE_BASE" --output dist .
+
+      - run: cp dist/index.html dist/404.html   # fallback de Pages
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: dist }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
