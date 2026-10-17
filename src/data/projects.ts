@@ -292,12 +292,12 @@ export const complementary = [
   "AWS Cloud Technical Essentials · Amazon Web Services",
 ];
 
-export const researchLines = [
+export const currentFocus = [
   "Pronóstico de series de tiempo",
-  "Estimación de estados",
-  "Sistemas dinámicos",
-  "ML y deep learning para energía inteligente",
-  "Sistemas de potencia",
+  "ML y DL",
+  "Agentes LLM",
+  "MLOps",
+  "Optimización computacional",
 ];
 
 export const publications = [

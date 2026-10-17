@@ -1,6 +1,6 @@
 import Reveal from "./Reveal";
 import { spotlight } from "../hooks";
-import { CVLAC, ORCID, complementary, education, proceedings, publications, researchLines } from "../data/projects";
+import { CVLAC, ORCID, complementary, education, proceedings, publications, currentFocus } from "../data/projects";
 
 const principles = [
   ["Entender antes de usar", "Cada laboratorio explica la teoría con su matemática y la implementa desde cero."],
@@ -36,7 +36,7 @@ export default function About() {
             Pregúntame por Python, AWS, agentes de IA, forecasting, matemáticas y música. Sigo a más de 500 artistas en Spotify 🎧
           </p>
           <ul className="tags">
-            {researchLines.map((l) => <li key={l} className="chip">{l}</li>)}
+            {currentFocus.map((l) => <li key={l} className="chip">{l}</li>)}
           </ul>
           <p className="links-row">
             <a href={CVLAC} target="_blank" rel="noreferrer">CvLAC ↗</a>
