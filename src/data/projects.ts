@@ -7,6 +7,7 @@ export const gh = (repo: string) => `https://github.com/${GITHUB_USER}/${repo}`;
 
 export type Category =
   | "Forecasting & ML"
+  | "Librerías desarrolladas"
   | "LLMs"
   | "Big Data"
   | "Bases de datos"
@@ -29,6 +30,7 @@ export interface Project {
 
 export const categories: Category[] = [
   "Forecasting & ML",
+  "Librerías desarrolladas",
   "LLMs",
   "Big Data",
   "Bases de datos",
@@ -54,7 +56,7 @@ export const projects: Project[] = [
   {
     name: "moeforecast",
     repo: "moeforecast",
-    category: "Forecasting & ML",
+    category: "Librerías desarrolladas",
     featured: true,
     summary:
       "Librería de pronóstico con Mixture of Experts y API estilo scikit-learn: descubre regímenes de la serie, entrena un experto por régimen y los combina con una red de gating.",
@@ -218,7 +220,7 @@ export const projects: Project[] = [
   {
     name: "dataxm-js",
     repo: "dataxm-js",
-    category: "Aprendizaje desde cero",
+    category: "Librerías desarrolladas",
     summary:
       "Cliente JavaScript para la API pública de XM (sistema eléctrico colombiano), inspirado en pydataxm.",
     tags: ["JavaScript", "API", "XM"],
