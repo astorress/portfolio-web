@@ -1,12 +1,5 @@
 import Reveal from "./Reveal";
-import { spotlight } from "../hooks";
 import { CVLAC, ORCID, complementary, education, proceedings, publications, currentFocus } from "../data/projects";
-
-const principles = [
-  ["Entender antes de usar", "Cada laboratorio explica la teoría con su matemática y la implementa desde cero."],
-  ["Reproducible por defecto", "Todo corre en Docker o Colab: clonas, ejecutas y obtienes el mismo resultado."],
-  ["Comparar, no solo construir", "El mismo problema en dos stacks (open source vs AWS), o el mismo laboratorio entre motores de bases de datos."],
-];
 
 export default function About() {
   return (
@@ -44,21 +37,7 @@ export default function About() {
           </p>
         </Reveal>
 
-        <div className="principles">
-          {principles.map(([t, d], i) => (
-            <Reveal key={t} delay={i * 80}>
-              <div className="principle spot" onMouseMove={spotlight}>
-                <span className="mono num">0{i + 1}</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-
-      <div className="academic">
-        <Reveal>
+        <Reveal delay={100}>
           <h3 className="mono label">Formación</h3>
           <ol className="timeline">
             {education.map((e) => (
@@ -74,8 +53,10 @@ export default function About() {
             {complementary.map((c) => <li key={c}>{c}</li>)}
           </ul>
         </Reveal>
+      </div>
 
-        <Reveal delay={100}>
+      <div className="academic">
+        <Reveal>
           <h3 className="mono label">Publicaciones</h3>
           <ul className="pubs">
             {publications.map((p) => (
@@ -86,7 +67,10 @@ export default function About() {
               </li>
             ))}
           </ul>
-          <h3 className="mono label sub">Memorias de congresos</h3>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <h3 className="mono label">Memorias de congresos</h3>
           <ul className="pubs">
             {proceedings.map((p) => (
               <li key={p.title}>
@@ -96,9 +80,9 @@ export default function About() {
               </li>
             ))}
           </ul>
-          <p className="muted small">Fuente: CvLAC (Minciencias).</p>
         </Reveal>
       </div>
+      <p className="muted small source">Fuente: CvLAC (Minciencias).</p>
     </section>
   );
 }

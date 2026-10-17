@@ -2,12 +2,6 @@ import { GITHUB_USER, EMAIL } from "../data/projects";
 import ForecastDemo from "./ForecastDemo";
 
 export default function Hero() {
-  const stats = [
-    ["2", "artículos científicos"],
-    ["2", "librerías propias"],
-    ["5", "motores de datos montados desde cero"],
-    ["2", "stacks MLOps: open source y AWS"],
-  ];
   return (
     <section id="top" className="hero container">
       <div className="hero-copy">
@@ -28,11 +22,6 @@ export default function Hero() {
         </div>
       </div>
       <ForecastDemo />
-      <dl className="stats">
-        {stats.map(([v, l]) => (
-          <div key={l}><dt>{v}</dt><dd>{l}</dd></div>
-        ))}
-      </dl>
     </section>
   );
 }

@@ -101,13 +101,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .btn.ghost { border-color: transparent; color: var(--muted); }
 .btn.big-btn { font: 500 clamp(.9rem, 3.6vw, 1.15rem) var(--mono); padding: 16px 28px; margin-top: 12px; }
 
-.stats {
-  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 40px 0 0; padding: 0;
-  background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
-}
-.stats div { background: var(--card); padding: 22px 24px; }
-.stats dt { font: 500 2.2rem/1.1 var(--serif); }
-.stats dd { margin: 4px 0 0; color: var(--muted); font-size: .82rem; }
 
 /* ── Demo MoE ── */
 .demo {
@@ -145,7 +138,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .bento > .reveal, .bento .card { height: 100%; }
 
 /* Tarjetas con spotlight */
-.card, .principle {
+.card {
   position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 12px; height: 100%;
   padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
   transition: border-color .2s, transform .2s;
@@ -156,7 +149,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .spot:hover::before { opacity: 1; }
 .card:hover { border-color: var(--border-hi); transform: translateY(-3px); }
-.card > *, .principle > * { position: relative; }
+.card > * { position: relative; }
 .card-top { display: flex; justify-content: space-between; align-items: center; }
 .open {
   width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%;
@@ -195,13 +188,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
 
 /* Sobre mí */
-.about { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: start; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 .about-text p { font: 400 1.3rem/1.55 var(--serif); margin: 0 0 18px; }
 .about-text strong { color: var(--c2); font-weight: 500; }
-.principles { display: grid; gap: 14px; }
-.principle h3 { margin: 0; font: 500 1.15rem var(--serif); }
-.principle p { margin: 0; color: var(--muted); font-size: .92rem; }
-.num { color: var(--c3); font-size: .8rem; }
 
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
 .skills h3 { margin: 0 0 12px; }
@@ -219,7 +208,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 920px) {
   .hero { grid-template-columns: 1fr; padding-top: 120px; }
-  .stats { grid-template-columns: repeat(2, 1fr); }
   .bento { grid-template-columns: 1fr 1fr; }
   .bento > *, .bento > *:nth-child(n+4) { grid-column: span 1; }
   .bento > *:last-child:nth-child(odd) { grid-column: 1 / -1; }
@@ -229,7 +217,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .header nav a:nth-child(n+4) { display: none; }
   .bento { grid-template-columns: 1fr; }
   .bento > * { grid-column: 1 !important; }
-  .stats dt { font-size: 1.7rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -243,7 +230,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .about-text a { color: var(--c2); }
 .about-text .tags { margin: 6px 0 14px; }
 .links-row { display: flex; gap: 18px; font: 500 .9rem var(--mono) !important; }
-.academic { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-top: 64px; }
+.academic { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 64px; }
 .academic h3 { margin: 0 0 18px; }
 .timeline, .pubs, .plain { list-style: none; margin: 0; padding: 0; }
 .timeline { border-left: 1px solid var(--border-hi); display: grid; gap: 26px; }
@@ -262,4 +249,4 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .pubs a:hover { color: var(--c2); }
 @media (max-width: 920px) { .academic { grid-template-columns: 1fr; } }
 
-.academic .sub { margin-top: 32px; }
+.source { margin-top: 28px; }
