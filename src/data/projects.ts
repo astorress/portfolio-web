@@ -313,3 +313,17 @@ export const publications = [
     year: "2022",
   },
 ];
+
+// Memorias de congresos (capítulo de memoria completo y ponencia). Fuente: CvLAC
+export const proceedings = [
+  {
+    title: "Estimadores de Estado en Convertidores de Potencia DC/DC: Revisión de Algunas Técnicas y Trabajos Futuros",
+    venue: "CIMM 2021, X Congreso Internacional de Ingenierías Mecánica, Mecatrónica y Automatización · Bogotá",
+    year: "2021",
+  },
+  {
+    title: "Análisis y simulación dinámica de la reacción de armadura en máquinas de corriente continua",
+    venue: "IX-CIMM VII-CIIMA 2019, Congreso Internacional de Ingeniería Mecánica, Mecatrónica y Automatización · Bogotá",
+    year: "2019",
+  },
+];

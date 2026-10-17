@@ -263,3 +263,5 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .pubs a, .pubs b { font: 500 1rem/1.4 var(--serif); color: var(--text); }
 .pubs a:hover { color: var(--c2); }
 @media (max-width: 920px) { .academic { grid-template-columns: 1fr; } }
+
+.academic .sub { margin-top: 32px; }

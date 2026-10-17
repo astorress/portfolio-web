@@ -1,6 +1,6 @@
 import Reveal from "./Reveal";
 import { spotlight } from "../hooks";
-import { CVLAC, ORCID, complementary, education, publications, researchLines } from "../data/projects";
+import { CVLAC, ORCID, complementary, education, proceedings, publications, researchLines } from "../data/projects";
 
 const principles = [
   ["Entender antes de usar", "Cada laboratorio explica la teoría con su matemática y la implementa desde cero."],
@@ -82,6 +82,16 @@ export default function About() {
               <li key={p.title}>
                 <span className="mono period">{p.year}</span>
                 {p.href ? <a href={p.href} target="_blank" rel="noreferrer">{p.title} ↗</a> : <b>{p.title}</b>}
+                <em>{p.venue}</em>
+              </li>
+            ))}
+          </ul>
+          <h3 className="mono label sub">Memorias de congresos</h3>
+          <ul className="pubs">
+            {proceedings.map((p) => (
+              <li key={p.title}>
+                <span className="mono period">{p.year} · ponente</span>
+                <b>{p.title}</b>
                 <em>{p.venue}</em>
               </li>
             ))}
