@@ -309,8 +309,9 @@ export const publications = [
   },
   {
     title: "Diseño y simulación de estimadores de estado lineales y no lineales en un modelo de convertidor de potencia DC/DC",
-    venue: "Revista Politécnica, vol. 18, pp. 140-161",
+    venue: "Revista Politécnica, vol. 18, núm. 36, pp. 140-161",
     year: "2022",
+    href: "https://doi.org/10.33571/rpolitec.v18n36a11",
   },
 ];
 
