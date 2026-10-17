@@ -140,8 +140,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Bento */
 .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-.bento > .b0 { grid-column: span 4; }
-.bento > .b1, .bento > .b2, .bento > .b3, .bento > .b4 { grid-column: span 2; }
+.bento > * { grid-column: span 2; }
+.bento > *:nth-child(n+4) { grid-column: span 3; }
 .bento > .reveal, .bento .card { height: 100%; }
 
 /* Tarjetas con spotlight */
@@ -167,13 +167,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .card p { margin: 0; color: var(--muted); font-size: .93rem; }
 .card:not(.big) p { flex: 1; }
 .card.big h3 { font-size: 1.6rem; }
-.b0 .card h3 { font-size: 2.1rem; }
 .stat { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
 .stat b {
   font: 500 2.6rem/1 var(--serif); background: linear-gradient(100deg, var(--c1), var(--c2));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.b0 .stat b { font-size: 4rem; }
 .stat span { color: var(--muted); font-size: .85rem; }
 .points { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: .88rem; color: var(--muted); }
 .points li { padding-left: 18px; position: relative; }
@@ -223,8 +221,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .hero { grid-template-columns: 1fr; padding-top: 120px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .bento { grid-template-columns: 1fr 1fr; }
-  .bento > .b0 { grid-column: 1 / -1; }
-  .bento > .b1, .bento > .b2, .bento > .b3, .bento > .b4 { grid-column: span 1; }
+  .bento > *, .bento > *:nth-child(n+4) { grid-column: span 1; }
+  .bento > *:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .about { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {

@@ -1,12 +1,11 @@
-import { projects, GITHUB_USER, EMAIL } from "../data/projects";
+import { GITHUB_USER, EMAIL } from "../data/projects";
 import ForecastDemo from "./ForecastDemo";
 
 export default function Hero() {
-  const repos = projects.reduce((n, p) => n + (p.links ? p.links.length : 1), 0);
   const stats = [
-    [String(repos), "repositorios públicos"],
-    ["2,88 M", "lecturas AMI procesadas en el lab"],
-    ["9", "notebooks del pipeline MoE"],
+    ["2", "artículos científicos"],
+    ["2", "librerías propias"],
+    ["5", "motores de datos montados desde cero"],
     ["2", "stacks MLOps: open source y AWS"],
   ];
   return (

@@ -5,7 +5,8 @@ import Reveal from "./Reveal";
 
 export default function Projects() {
   const [active, setActive] = useState<Category | null>(null);
-  const visible = active ? projects.filter((p) => p.category === active) : projects;
+  const inCategory = (p: (typeof projects)[number], c: Category) => p.category === c || !!p.alsoIn?.includes(c);
+  const visible = active ? projects.filter((p) => inCategory(p, active)) : projects;
 
   return (
     <section id="projects" className="container section">
@@ -19,7 +20,7 @@ export default function Projects() {
         </button>
         {categories.map((c) => (
           <button key={c} className={`pill ${active === c ? "on" : ""}`} onClick={() => setActive(c)}>
-            {c} <small>{projects.filter((p) => p.category === c).length}</small>
+            {c} <small>{projects.filter((p) => inCategory(p, c)).length}</small>
           </button>
         ))}
       </div>

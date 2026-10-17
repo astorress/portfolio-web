@@ -8,7 +8,7 @@ export const gh = (repo: string) => `https://github.com/${GITHUB_USER}/${repo}`;
 export type Category =
   | "Forecasting & ML"
   | "Librerías desarrolladas"
-  | "LLMs"
+  | "LLMs y agentes"
   | "Big Data"
   | "Bases de datos"
   | "MLOps"
@@ -20,6 +20,7 @@ export interface Project {
   name: string;
   repo?: string; // nombre del repo en GitHub (si es público)
   category: Category;
+  alsoIn?: Category[]; // categorías extra en las que también cuenta para el filtro
   summary: string;
   tags: string[];
   featured?: boolean;
@@ -31,7 +32,7 @@ export interface Project {
 export const categories: Category[] = [
   "Forecasting & ML",
   "Librerías desarrolladas",
-  "LLMs",
+  "LLMs y agentes",
   "Big Data",
   "Bases de datos",
   "MLOps",
@@ -43,26 +44,23 @@ export const categories: Category[] = [
 export const projects: Project[] = [
   // ── Forecasting & ML ──────────────────────────────────────────────
   {
-    name: "MoEForecaster",
-    repo: "MoEForecaster",
+    name: "Mixture of Experts para demanda eléctrica",
     category: "Forecasting & ML",
+    alsoIn: ["Librerías desarrolladas"],
     featured: true,
     summary:
-      "Pipeline completo de mi trabajo de grado: pronóstico horario de la demanda eléctrica del SIN de Colombia con Mixture of Experts. Nueve notebooks reproducibles desde la descarga de datos hasta el benchmark.",
+      "De la investigación a la librería: el pipeline de mi tesis pronostica la demanda horaria del SIN de Colombia con Mixture of Experts, y moeforecast lo convierte en una librería con API estilo scikit-learn.",
     stat: { value: "9", label: "notebooks reproducibles" },
-    points: ["Datos públicos de XM → clustering de perfiles → expertos → gating", "Optimización de hiperparámetros y benchmark final", "Corre en Colab, Conda, pip o Docker"],
-    tags: ["Python", "MoE", "Series de tiempo", "Clustering", "HPO", "Docker"],
-  },
-  {
-    name: "moeforecast",
-    repo: "moeforecast",
-    category: "Librerías desarrolladas",
-    featured: true,
-    summary:
-      "Librería de pronóstico con Mixture of Experts y API estilo scikit-learn: descubre regímenes de la serie, entrena un experto por régimen y los combina con una red de gating.",
-    stat: { value: "10", label: "pasos de flujo, un solo API" },
-    points: ["Regímenes: día laborable, fin de semana, festivo", "Gating duro, suave y adaptativo", "Guardado y carga con control de versión"],
-    tags: ["Python", "scikit-learn API", "Librería", "Gating"],
+    points: [
+      "Pipeline: datos de XM → clustering de perfiles → expertos → gating",
+      "Librería: regímenes, gating duro, suave y adaptativo",
+      "Corre en Colab, Conda, pip o Docker",
+    ],
+    tags: ["Python", "MoE", "Series de tiempo", "scikit-learn API", "Docker"],
+    links: [
+      { label: "MoEForecaster · tesis", href: gh("MoEForecaster") },
+      { label: "moeforecast · librería", href: gh("moeforecast") },
+    ],
   },
   {
     name: "moeforecast-validation",
@@ -83,13 +81,36 @@ export const projects: Project[] = [
   {
     name: "llm-lab",
     repo: "llm-lab",
-    category: "LLMs",
+    category: "LLMs y agentes",
     featured: true,
     summary:
       "Laboratorio para construir y entrenar un LLM desde cero: tokenización, corpus, embeddings, transformer (RoPE, RMSNorm), entrenamiento, LoRA, evaluación e interpretabilidad, con la matemática explicada.",
     stat: { value: "9", label: "notebooks, de tokens a LoRA" },
     points: ["MiniGPT con atención, RoPE y RMSNorm escritos a mano", "Pipeline real de corpus: limpieza, dedup y splits sin fuga", "Versión SMALL (Colab Free) y LARGE (A100)"],
     tags: ["PyTorch", "Transformers", "LoRA", "NLP"],
+  },
+
+  {
+    name: "langgraph-agent-lab",
+    repo: "langgraph-agent-lab",
+    category: "LLMs y agentes",
+    featured: true,
+    summary:
+      "Laboratorio de LangChain y LangGraph: un agente ReAct armado a mano con StateGraph, herramientas, aprobación humana con interrupt, memoria persistente en SQLite y soporte para LangGraph Studio.",
+    stat: { value: "HITL", label: "humano en el ciclo con interrupt" },
+    points: ["Proveedor configurable: OpenAI o Anthropic", "Pausa y pide aprobación antes de guardar notas", "Pruebas con un modelo simulado: sin red ni API key"],
+    tags: ["Python", "LangGraph", "LangChain", "Docker"],
+  },
+  {
+    name: "Agentes LLM",
+    category: "LLMs y agentes",
+    summary:
+      "Bases de despliegue, como infraestructura como código, de dos agentes de código abierto (OpenClaw y Hermes Agent) en Amazon Lightsail, con Claude en Amazon Bedrock, uso por Telegram y secretos en Secrets Manager.",
+    tags: ["AWS Lightsail", "Bedrock", "Serverless Framework", "IaC", "Telegram"],
+    links: [
+      { label: "openclaw-lightsail", href: gh("openclaw-lightsail") },
+      { label: "hermes-agent-lightsail", href: gh("hermes-agent-lightsail") },
+    ],
   },
 
   // ── Big Data ──────────────────────────────────────────────────────
@@ -149,7 +170,7 @@ export const projects: Project[] = [
   {
     name: "mongodb-vector-embeddings",
     repo: "mongodb-vector-embeddings",
-    category: "LLMs",
+    category: "LLMs y agentes",
     summary:
       "Búsqueda semántica con $vectorSearch sobre Don Quijote de la Mancha usando sentence-transformers.",
     tags: ["MongoDB", "Embeddings", "Vector search"],
